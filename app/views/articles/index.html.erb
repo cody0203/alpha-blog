@@ -27,11 +27,13 @@
                 <%= article.description %>
             </td>
             <td>
-                <span>Show</span>
-                <span>Edit</span>
-                <span>Delete</span>
+                <%= link_to "Show", article %>
+                <%= link_to "Edit", edit_article_path(article) %>
+                <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: 'Are you sure?', disable_with: "Processing..." } %>
             </td>
         </tr>
         <% end %>
     </tbody>
 </table>
+
+<%= link_to "Create new article", new_article_path %>
