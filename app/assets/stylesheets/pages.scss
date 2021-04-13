@@ -1,3 +1,31 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.article-page {
+  height: 100%;
+  background-color: lightgrey;
+  text-align: center;
+  padding: 50px 0;
+
+  .header {
+    position: relative;
+    margin: 0 10%;
+
+    .create-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .articles-container {
+    margin: 0 10%;
+  }
+}
+
+@media (min-width: 768px) {
+  .articles-container {
+    margin: 0 25%;
+  }
+}

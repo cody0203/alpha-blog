@@ -1,39 +1,30 @@
-<h1>
-    Articles
-</h1>
+<div class="article-page">
+    <div class="header">
+        <h1>
+            Articles
+        </h1>
+        <%= link_to "Create", new_article_path, class: "btn btn-success create-button" %>
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                Title
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-    </thead>
-
-    <tbody>
+    </div>
+    <div class="articles-container">
         <% @articles.each do |article| %>
-        <tr>
-            <td>
-                <%= article.title %>
-            </td>
-            <td>
-                <%= article.description %>
-            </td>
-            <td>
-                <%= link_to "Show", article %>
-                <%= link_to "Edit", edit_article_path(article) %>
-                <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: 'Are you sure?', disable_with: "Processing..." } %>
-            </td>
-        </tr>
+        <div class="card text-center">
+            <div class="card-header">
+                by Cody
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-success"><%= article.title %></h5>
+                <p class="card-text"><%= article.description %></p>
+                <div>
+                    <%= link_to "View", article, class: "btn btn-outline-success" %>
+                    <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info"  %>
+                    <%= link_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?', disable_with: "Processing..." } %>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
         <% end %>
-    </tbody>
-</table>
-
-<%= link_to "Create new article", new_article_path %>
+    </div>
+</div>
