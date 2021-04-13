@@ -1,0 +1,31 @@
+html,
+body {
+  height: 100%;
+}
+
+.navbar {
+  background-color: black;
+
+  .nav-link {
+    color: white;
+  }
+
+  .navbar-brand {
+    color: white;
+    text-transform: uppercase;
+  }
+}
+
+.jumbo {
+  background: url("banner.jpeg") no-repeat center center;
+  color: white;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
