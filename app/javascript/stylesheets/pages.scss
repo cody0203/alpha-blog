@@ -3,14 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .article-page {
-  height: 100%;
   background-color: lightgrey;
   text-align: center;
   padding: 50px 0;
 
   .header {
     position: relative;
-    margin: 0 10%;
 
     .create-button {
       position: absolute;
@@ -18,14 +16,26 @@
       top: 0;
     }
   }
-
-  .articles-container {
-    margin: 0 10%;
-  }
 }
 
 @media (min-width: 768px) {
   .articles-container {
     margin: 0 25%;
   }
+}
+
+@media (max-width: 768px) {
+  .articles-container {
+    margin: 0 10%;
+  }
+}
+
+.page-form-container {
+  max-width: 700px;
+  margin: 50px auto;
+}
+
+.back-to-page-container {
+  margin-top: 30px;
+  text-align: center;
 }

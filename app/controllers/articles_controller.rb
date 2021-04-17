@@ -13,9 +13,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+
     if @article.save
       redirect_to @article
     else
+      @title_error = @article.errors.include?(:title)
+      @description_error = @article.errors.include?(:description)
       render :new
     end
   end

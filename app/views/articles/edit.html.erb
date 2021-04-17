@@ -1,4 +1,8 @@
-<h1>Edit article</h1>
+<div class="page-form-containe container">
+    <h1>Edit article</h1>
 
-<%= render "form", article: @article%>
-<%= link_to "Cancel and back to article list", articles_path %>
+    <%= render "form", article: @article%>
+    <div class="back-to-page-container">
+        <%= link_to "[Cancel and back to article list]", articles_path %>
+    </div>
+</div>
