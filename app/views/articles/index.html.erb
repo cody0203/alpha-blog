@@ -13,7 +13,9 @@
                 by Cody
             </div>
             <div class="card-body">
-                <h5 class="card-title text-success"><%= article.title %></h5>
+                <h5 class="card-title">
+                    <%= link_to article.title, article, class: "text-success article-name" %>
+                </h5>
                 <p class="card-text"><%= article.description %></p>
                 <div>
                     <%= link_to "View", article, class: "btn btn-outline-success" %>
@@ -22,7 +24,10 @@
                 </div>
             </div>
             <div class="card-footer text-muted">
-                2 days ago
+                <small>
+                    Created <%= time_ago_in_words(article.created_at)  %> ago,
+                    edited <%= time_ago_in_words(article.updated_at) %> ago
+                </small>
             </div>
         </div>
         <% end %>
