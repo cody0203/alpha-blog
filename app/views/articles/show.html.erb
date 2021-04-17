@@ -1,11 +1,30 @@
-<h1>
-    <%= @article.title %>
-</h1>
+<div class="detail-page-container container">
+    <h1>
+        <%= @article.title %>
+    </h1>
 
-<p>
-    <%= @article.description %>
-</p>
+    <div class="card text-center">
+        <div class="card-header">
+            by Cody
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+            </h5>
+            <div class="card-text text-start"><%= simple_format(@article.description) %></div>
+            <div>
+                <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info"  %>
+                <%= link_to "Delete", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?', disable_with: "Processing..." } %>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <small>
+                Created <%= time_ago_in_words(@article.created_at)  %> ago,
+                edited <%= time_ago_in_words(@article.updated_at) %> ago
+            </small>
+        </div>
+    </div>
 
-<%= link_to "Edit", edit_article_path(@article) %> |
-<%= link_to "Delete", article_path(@article), method: :delete %> |
-<%= link_to "Back to article list", articles_path %>
+    <div class="back-to-page-container">
+        <%= link_to "[Back to article list]", articles_path %>
+    </div>
+</div>

@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .article-page {
-  background-color: lightgrey;
   text-align: center;
   padding: 50px 0;
 
@@ -37,5 +36,11 @@
 
 .back-to-page-container {
   margin-top: 30px;
+  text-align: center;
+}
+
+.detail-page-container {
+  max-width: 700px;
+  margin: 50px auto;
   text-align: center;
 }
