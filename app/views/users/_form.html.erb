@@ -1,0 +1,38 @@
+    <div class="container">
+        <%= form_with(model: @user, local: true) do |form| %>
+        <div class="mb-3">
+            <%= form.label :username, class: 'form-label' %>
+            <%= form.text_field :username, class: "form-control" + (@username_error ? ' is-invalid' : ''), placeholder: "Enter a username" %>
+            <% @user.errors.full_messages_for(:username).each do |msg| %>
+            <p class="<%= @username_error ? 'invalid-feedback' : ""%>">
+                <%= msg%>
+            </p>
+            <% end %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :email, class: 'form-label' %>
+            <%= form.text_field :email, class: "form-control" + (@email_error ? ' is-invalid' : ''), placeholder: "Enter your email address" %>
+            <% @user.errors.full_messages_for(:email).each do |msg| %>
+            <p class="<%= @email_error ? 'invalid-feedback' : ""%>">
+                <%= msg%>
+            </p>
+            <% end %>
+        </div>
+
+        <div>
+            <%= form.label :password, class: 'form-label' %>
+            <%= form.text_field :password, class: "form-control" + (@password_error ? ' is-invalid' : ''), placeholder: "Enter a password", type: "password" %>
+            <% @user.errors.full_messages_for(:password).each do |msg| %>
+            <p class="<%= @password_error ? 'invalid-feedback' : ""%>">
+                <%= msg%>
+            </p>
+            <% end %>
+        </div>
+
+        <div class="mt-4">
+            <%= form.submit nil, class: "btn btn-primary" %>
+        </div>
+
+        <% end %>
+    </div>
