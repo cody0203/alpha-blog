@@ -2,11 +2,17 @@
     <div class="articles-container">
         <div class="header">
             <h1>
-                Articles
+                <%= @user.username %>'s profile
             </h1>
-            <%= link_to "Create", new_article_path, class: "btn btn-success create-button" %>
+
+            <%= gravatar_for @user, size: 200 %>
 
         </div>
+
+        <h2 class="text-center">
+            Articles
+        </h2>
+
 
         <%= render "partials/articles", @aritlces %>
     </div>

@@ -1,0 +1,24 @@
+<% @articles.each do |article| %>
+<div class="card text-center">
+    <div class="card-header">
+        by <%= article.user.username if article.user %>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">
+            <%= link_to article.title, article, class: "text-success article-name" %>
+        </h5>
+        <p class="card-text"><%= article.description %></p>
+        <div>
+            <%= link_to "View", article, class: "btn btn-outline-success" %>
+            <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info"  %>
+            <%= link_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?', disable_with: "Processing..." } %>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        <small>
+            Created <%= time_ago_in_words(article.created_at)  %> ago,
+            edited <%= time_ago_in_words(article.updated_at) %> ago
+        </small>
+    </div>
+</div>
+<% end %>
