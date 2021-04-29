@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @articles = @user.articles
   end
@@ -13,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_path
+      redirect_to users_path
     else
       @username_error = @user.errors.include?(:username)
       @email_error = @user.errors.include?(:email)
@@ -26,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to root_path
+      redirect_to @user
     else
       @username_error = @user.errors.include?(:username)
       @email_error = @user.errors.include?(:email)

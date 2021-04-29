@@ -1,6 +1,7 @@
-html,
 body {
-  height: 100%;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 72px;
 }
 
 .navbar {
@@ -29,5 +30,7 @@ body {
 }
 
 #sticky-footer {
-  flex-shrink: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
