@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
 
   def index
-    @users = User.all
+    @users = pagination(User)
   end
 
   def show
-    @articles = @user.articles
+    @articles = pagination(@user.articles)
   end
 
   def new
