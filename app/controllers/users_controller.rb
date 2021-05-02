@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show edit update destroy]
   before_action :require_user, except: %i[index show]
   before_action :authorization, only: %i[edit update]
 
@@ -42,6 +42,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil if current_user == @user
+
+    redirect_to users_path
+  end
+
   private
 
   def set_user
@@ -53,6 +60,6 @@ class UsersController < ApplicationController
   end
 
   def authorization
-    redirect_to @user if current_user != @user
+    redirect_to @user if current_user != @user && !current_user.admin?
   end
 end

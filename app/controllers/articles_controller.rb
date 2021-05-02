@@ -51,6 +51,6 @@ class ArticlesController < ApplicationController
   end
 
   def authorization
-    redirect_to @article if current_user != @article.user
+    redirect_to @article if current_user != @article.user && !current_user.admin?
   end
 end
