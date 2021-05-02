@@ -7,24 +7,22 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: email_param)
     @email = email_param
 
-    if email_param.empty?
+    if email_param.blank?
       @email_error = 'Please enter your email!'
     elsif !@user && email_param
       @email_error = 'Wrong email, please try again.'
     end
 
-    if password_param.empty?
+    if password_param.blank?
       @password_error = 'Please enter your password!'
-    elsif @user && !@user.authenticate(password_param)
+    elsif @user
+      if @user.authenticate(password_param)
+        session[:user_id] = @user.id
+        redirect_to @user and return
+      end
       @password_error = 'Wrong password, please try again!'
     end
-
-    render :new if @email_error || @password_error
-
-    if @user && @user.authenticate(password_param)
-      session[:user_id] = @user.id
-      redirect_to @user
-    end
+    render :new
   end
 
   def destroy
