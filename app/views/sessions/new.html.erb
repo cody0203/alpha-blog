@@ -1,0 +1,32 @@
+<div class="page-form-container container">
+
+    <h1>Sign in</h1>
+
+    <div class="container">
+        <%= form_with(scope: :session, url: signin_path) do |form| %>
+        <div class="mb-3">
+            <%= form.label :email, class: 'form-label' %>
+            <%= form.text_field :email, class: "form-control" + (@email_error ? ' is-invalid' : ''), placeholder: "Enter your email", value: @email %>
+            <p class="<%= @email_error ? 'invalid-feedback' : ""%>">
+                <%= @email_error %>
+            </p>
+        </div>
+
+        <div>
+            <%= form.label :password, class: 'form-label' %>
+            <%= form.text_field :password, class: "form-control" + (@password_error ? ' is-invalid' : ''), placeholder: "Enter your password", type: "password" %>
+            <p class="<%= @password_error ? 'invalid-feedback' : ""%>">
+                <%= @password_error %>
+            </p>
+        </div>
+
+        <div class="mt-4">
+            <%= form.submit "Sign in", class: "btn btn-primary" %>
+        </div>
+
+        <% end %>
+    </div>
+    <div class="back-to-page-container">
+        <%= link_to "[Back to home page]", root_path %>
+    </div>
+</div>

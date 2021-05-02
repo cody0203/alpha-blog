@@ -15,11 +15,30 @@
                 <li class="nav-item">
                     <%= link_to "About", about_path, class: 'nav-link' %>
                 </li>
+
+                <% if logged_in? %>
+                <li class="nav-item">
+                    <%= link_to "Profile", user_path(session[:user_id]), class: 'nav-link' %>
+                </li>
+                <% else%>
+                <li class="nav-item">
+                    <%= link_to "Sign in", signin_path, class: "nav-link" %>
+                </li>
+
+                <% end %>
+
+                <% if logged_in? %>
+                <li class="nav-item">
+                    <%= link_to "Logout", logout_path, class: 'nav-link', method: :delete %>
+                </li>
+                <% else%>
+                <li class="nav-item">
+                    <%= link_to "Sign up", signup_path, class: "nav-link" %>
+                </li>
+
+                <% end %>
+
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>
