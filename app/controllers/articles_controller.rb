@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
+  before_action :require_user, except: %i[index show]
+  before_action :authorization, only: %i[edit update destroy]
 
   def index
     @articles = pagination(Article)
@@ -13,7 +15,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    @article.user = current_user
     if @article.save
       redirect_to @article
     else
@@ -46,5 +48,9 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+
+  def authorization
+    redirect_to @article if current_user != @article.user
   end
 end

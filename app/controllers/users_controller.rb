@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
+  before_action :require_user, except: %i[index show]
+  before_action :authorization, only: %i[edit update]
 
   def index
     @users = pagination(User)
@@ -48,5 +50,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def authorization
+    redirect_to @user if current_user != @user
   end
 end
