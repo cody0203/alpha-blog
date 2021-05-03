@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
-  def pagination(data)
-    data.paginate(page: params[:page], per_page: 10)
+  def pagination(data, per_page = 10)
+    data.paginate(page: params[:page], per_page: per_page)
   end
 
   def current_user

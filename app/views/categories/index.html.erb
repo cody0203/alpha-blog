@@ -1,0 +1,26 @@
+<div class="detail-page">
+    <div class="articles-container">
+        <div class="header">
+            <h1>
+                Categories
+            </h1>
+        </div>
+
+        <% @categories.each do |category| %>
+        <div class="card text-center">
+            <div class="card-body">
+                <%= link_to category.name, category, class: "text-success article-name" %>
+            </div>
+            <div class="card-footer text-muted">
+                <small>
+                    Created <%= time_ago_in_words(category.created_at)  %> ago,
+                    edited <%= time_ago_in_words(category.updated_at) %> ago
+                </small>
+            </div>
+        </div>
+        <% end %>
+
+        <%= will_paginate @users %>
+
+    </div>
+</div>
