@@ -23,6 +23,8 @@ gem 'bcrypt', '~> 3.1.7'
 ## Gemfile for Rails 3+, Sinatra, and Merb
 gem 'will_paginate', '~> 3.3.0'
 
+gem 'rexml', '~> 3.2', '>= 3.2.5'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
