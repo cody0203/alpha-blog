@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show]
+  before_action :require_admin, except: %i[index show]
 
   def index
     @categories = pagination(Category, 5)
@@ -30,5 +31,9 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def require_admin
+    redirect_to categories_path unless logged_in? && current_user.admin?
   end
 end
