@@ -13,4 +13,15 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_match 'Sports', response.body
   end
+
+  test 'get new category form and reject invalid category submission' do
+    get new_category_url
+    assert_response :success
+    assert_no_difference 'Category.count' do
+      post categories_path, params: { category: { name: ' ' } }
+    end
+
+    assert_select 'input#category_name.is-invalid'
+    assert_select 'p.invalid-feedback'
+  end
 end
