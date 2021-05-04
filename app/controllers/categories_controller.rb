@@ -6,7 +6,9 @@ class CategoriesController < ApplicationController
     @categories = pagination(Category, 5)
   end
 
-  def show; end
+  def show
+    @articles = pagination(@category.articles, 5)
+  end
 
   def new
     @category = Category.new
