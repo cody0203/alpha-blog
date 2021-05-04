@@ -4,6 +4,7 @@
             <h1 class="my-4">
                 Category: <%= @category.name %>
             </h1>
+            <%= link_to "Update category name", edit_category_path(@category), class: "btn btn-info my-3" if logged_in? && current_user.admin? %>
 
         </div>
 

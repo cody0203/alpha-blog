@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show]
+  before_action :set_category, only: %i[show edit update]
   before_action :require_admin, except: %i[index show]
 
   def index
@@ -22,6 +22,17 @@ class CategoriesController < ApplicationController
     else
       @name_error = @category.errors.include?(:name)
       render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @category.update(category_params)
+      redirect_to @category
+    else
+      @name_error = @category.errors.include?(:name)
+      render :edit
     end
   end
 

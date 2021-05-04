@@ -1,0 +1,16 @@
+        <%= form_with(model: @category, local: true) do |form| %>
+        <div class="mb-3">
+            <%= form.label :name, "Category name", class: 'form-label' %>
+            <%= form.text_field :name, class: "form-control" + (@name_error ? ' is-invalid' : ''), placeholder: "Enter a name" %>
+            <% @category.errors.full_messages_for(:name).each do |msg| %>
+            <p class="<%= @name_error ? 'invalid-feedback' : ""%>">
+                <%= msg%>
+            </p>
+            <% end %>
+        </div>
+
+        <div class="mt-4">
+            <%= form.submit nil, class: "btn btn-primary" %>
+        </div>
+
+        <% end %>
