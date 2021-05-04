@@ -1,6 +1,7 @@
 <div class="detail-page-container container">
     <h1>
         <%= @article.title %>
+        <%= render "partials/tags", data: @article.categories %>
     </h1>
 
     <div class="card text-center">

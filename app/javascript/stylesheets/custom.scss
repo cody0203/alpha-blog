@@ -4,6 +4,14 @@ body {
   padding-bottom: 72px;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 .navbar {
   background-color: black;
 
@@ -33,4 +41,21 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 10px;
+  margin-top: 8px;
+}
+
+.badge {
+  font-size: 12px;
+
+  a {
+    color: inherit;
+  }
 }

@@ -2,6 +2,7 @@
 <div class="card text-center">
     <div class="card-header">
         by <%= link_to article.user.username, user_path(article.user), class: "article-name" if article.user %>
+        <%= render "partials/tags", data: article.categories %>
     </div>
     <div class="card-body">
         <h5 class="card-title">
