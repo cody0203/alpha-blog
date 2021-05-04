@@ -4,6 +4,8 @@
             <h1>
                 Categories
             </h1>
+
+            <%= link_to "Create", new_category_path, class: "btn btn-success create-button" if logged_in? && current_user.admin? %>
         </div>
 
         <% @categories.each do |category| %>
