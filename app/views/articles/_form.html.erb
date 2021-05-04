@@ -18,7 +18,12 @@
                 <%= msg%>
             </p>
             <% end %>
+        </div>
 
+        <div>
+            <%= form.label :category, class: 'form-label' %>
+            <%= form.collection_select( :category_ids, Category.all, :id, :name,
+            { prompt: 'Make your selection from the list below (can be empty)' }, { multiple: true, class: 'form-select', size: 5, selected: @categories }) %>
         </div>
 
         <div class="mt-4">

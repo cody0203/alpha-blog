@@ -25,7 +25,9 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @categories = @article.categories
+  end
 
   def update
     if @article.update(article_params)
@@ -47,7 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 
   def authorization
